@@ -19,11 +19,20 @@ class tut1
         }
         else if(type == 1)
         {
+            
             String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
             for(int i = 0; i < l; i++)
             {
                 itemInt[i] = i;
-                itemStr[i] = alphabet[i/26];
+                if(i/ (l/26) - 1 > 0)
+                {
+                    itemStr[i] = alphabet[i/ (l/26) - 1];
+                }
+                else
+                {
+                    itemStr[i] = alphabet[i/ (l/26)];
+                }
+                
                 itemDouble[i] = i + 0.0;
             }
             
@@ -34,7 +43,15 @@ class tut1
             for(int i = l; i > l; i--)
             {
                 itemInt[i] = i;
-                itemStr[i] = alphabet[i/26];
+                if(i/ (l/26) - 1 > 0)
+                {
+                    itemStr[i] = alphabet[i / (l/26) - 1];
+                }
+                else
+                {
+                    itemStr[i] = alphabet[i / (l/26)];
+                }
+                
                 itemDouble[i] = i + 0.0;
             }
         }
@@ -46,7 +63,14 @@ class tut1
                 for(int j = 0; j < l / 2; j++)
                 {
                     itemInt[i + j] = i;
-                    itemStr[i + j] = alphabet[i/26];
+                    if(i/ (l/26) - 1 > 0)
+                    {
+                        itemStr[i] = alphabet[i / (l/26) - 1];
+                    }
+                    else
+                    {  
+                        itemStr[i] = alphabet[i / (l/26)];
+                    }
                     itemDouble[i+ j]  = i + 0.0;
                 }
                 
@@ -80,7 +104,9 @@ class tut1
             timer = new Stopwatch();
             quickSortInt(itemInt, 0, itemInt.length - 1);
             time = timer.elapsedTime();
-            System.out.println("Time for Quick: " + time);       
+            System.out.println("Time for Quick: " + time);    
+            
+            System.out.println("");
             
 ///////////////////////////////////////////////////////////////////////
 
@@ -109,6 +135,8 @@ class tut1
             time = timer.elapsedTime();
             System.out.println("Time for Quick: " + time);
 
+            System.out.println("");
+
 ///////////////////////////////////////////////////////////////////////        
 
             timer = new Stopwatch();
@@ -135,6 +163,8 @@ class tut1
             quickSortDouble(itemDouble, 0, itemDouble.length - 1);
             time = timer.elapsedTime();
             System.out.println("Time for Quick: " + time);
+
+            System.out.println("");
         
     }   
 /////////////////////////////////////////////////////////////////////////////
