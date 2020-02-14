@@ -55,7 +55,7 @@ class tut1
             timer = new Stopwatch();
             insertionSortString(itemStr);
             time = timer.elapsedTime();
-            System.out.println("Time for insertion int: " + time);
+            System.out.println("Time for insertion: " + time);
 
             timer = new Stopwatch();
             selectionSortString(itemStr);
@@ -87,7 +87,7 @@ class tut1
             timer = new Stopwatch();
             insertionSortDouble(itemDouble);
             time = timer.elapsedTime();
-            System.out.println("Time for insertion int: " + time);
+            System.out.println("Time for insertion: " + time);
 
             timer = new Stopwatch();
             selectionSortDouble(itemDouble);
