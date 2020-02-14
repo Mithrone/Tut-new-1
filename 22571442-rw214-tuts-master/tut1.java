@@ -7,15 +7,53 @@ class tut1
         int type = Integer.parseInt(args[0]);
         int l = Integer.parseInt(args[1]);
 
-        int[] itemInt;
-        String[] itemStr;
-        Double[] itemDouble;
+        int[] itemInt = new int[l];
+        String[] itemStr = new String[l];
+        Double[] itemDouble = new Double[l];
         
         if(type == 0)
         {
             itemInt = generateInt(l);
+            itemStr = generateString(l);
+            itemDouble = generateDouble(l);
+        }
+        else if(type == 1)
+        {
+            String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+            for(int i = 0; i < l; i++)
+            {
+                itemInt[i] = i;
+                itemStr[i] = alphabet[i/26];
+                itemDouble[i] = i + 0.0;
+            }
+            
+        }
+        else if(type == 2)
+        {
+            String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+            for(int i = l; i > l; i--)
+            {
+                itemInt[i] = i;
+                itemStr[i] = alphabet[i/26];
+                itemDouble[i] = i + 0.0;
+            }
+        }
+        else
+        {
+            String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+            for(int i = 0; i < l / 2; i++)
+            {
+                for(int j = 0; j < l / 2; j++)
+                {
+                    itemInt[i + j] = i;
+                    itemStr[i + j] = alphabet[i/26];
+                    itemDouble[i+ j]  = i + 0.0;
+                }
+                
+            }
+        }
 
-
+///////////////////////////////////////////////////////////////////////
             Stopwatch timer;
             Double time;
 
@@ -42,16 +80,10 @@ class tut1
             timer = new Stopwatch();
             quickSortInt(itemInt, 0, itemInt.length - 1);
             time = timer.elapsedTime();
-            System.out.println("Time for Quick: " + time);
+            System.out.println("Time for Quick: " + time);       
+            
+///////////////////////////////////////////////////////////////////////
 
-        }
-
-        if(type == 1)
-        {
-            itemStr = generateString(l);
-
-            Stopwatch timer;
-            Double time;
             timer = new Stopwatch();
             insertionSortString(itemStr);
             time = timer.elapsedTime();
@@ -77,13 +109,8 @@ class tut1
             time = timer.elapsedTime();
             System.out.println("Time for Quick: " + time);
 
-        }
+///////////////////////////////////////////////////////////////////////        
 
-        if(type == 2)
-        {
-            itemDouble = generateDouble(l);
-            Stopwatch timer;
-            Double time;
             timer = new Stopwatch();
             insertionSortDouble(itemDouble);
             time = timer.elapsedTime();
@@ -108,7 +135,7 @@ class tut1
             quickSortDouble(itemDouble, 0, itemDouble.length - 1);
             time = timer.elapsedTime();
             System.out.println("Time for Quick: " + time);
-        }
+        
     }   
 /////////////////////////////////////////////////////////////////////////////
     public static int[] generateInt(int l)
