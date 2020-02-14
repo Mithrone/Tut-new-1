@@ -26,7 +26,7 @@ class tut1
             //insertionSortInt(itemInt);
             Double time = timer.elapsedTime();
 
-            mergeSortInt(itemInt, 0, itemInt.length);
+            mergeSortInt(itemInt, 0, itemInt.length - 1);
 
             System.out.println("Time: " + time);
             for(int i = 0; i < l ; i++)
@@ -199,7 +199,6 @@ class tut1
     {
         if(start < end)
         {
-            System.out.println("he");
             item = mergeSortInt(item, start, ((start + end) / 2));
             item = mergeSortInt(item, ((start + end) / 2) + 1, end);
 
@@ -232,17 +231,14 @@ class tut1
                 count++;
                 s++;
             }
-            else if ( e < item.length)
+            else if (item[s] < item[e])
             {
-                if(item[s] < item[e])
-                {
-                    fin[count] = item[s];
-                    count++;
-                    s++;
-                }
+                fin[count] = item[s];
+                count++;
+                s++;
                 
             }
-            else if ( e < item.length)
+            else
             {
                 fin[count] = item[e];
                 count++;
@@ -250,20 +246,53 @@ class tut1
             }
         }
 
-        for (int p=0 ; p< count ;p ++) {
-            /* Now the real array has elements in sorted manner including both 
-                 parts.*/
-              item[ start++ ] = fin[ p ] ;                          
-           }
+        for (int p=0 ; p< count ;p ++) 
+        {
+            item[ start++ ] = fin[ p ] ;                          
+        }
         return item;
     }
 
-    public static int[] quickSortInt(int[] item)
+    public static int[] quickSortInt(int[] item, int start, int end)
     {
+        int rightIndex;
+        if(start < end)
+        {
+            rightIndex = searchIndexInt(item, start, end);
+
+            System.out.println("start");
+            quickSortInt(item, start, rightIndex - 1);
+            System.out.println("end");
+            quickSortInt(item, rightIndex + 1, end);
+        }
         return item;
+    }
+
+    public static int searchIndexInt(int[] item, int start, int end)
+    {
+        int rightItem= item[end];
+
+        int small = start - 1;
+
+        for(int i = start; i < end; i++)
+        {
+            if(item[i] < rightItem)
+            {
+                small++;
+                int temp = item[i];
+                item[i] = item[small];
+                item[small] = temp;
+            }
+        }
+        int temp = item[small + 1];
+        item[small + 1] = item[end];
+        item[end] = temp;
+        return small + 1;
     }
     
 }
+
+
 
 class Stopwatch
 {
