@@ -58,18 +58,19 @@ class tut1
         else
         {
             String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
-            for(int i = 0; i < l / 2; i++)
+            for(int i = 0; i < l - 1; i++)
             {
-                for(int j = 0; j < l / 2; j++)
+                for(int j = 0; j < 2; j++)
                 {
                     itemInt[i + j] = i;
+                    
                     if(i/ (l/26) - 1 > 0)
                     {
-                        itemStr[i] = alphabet[i / (l/26) - 1];
+                        itemStr[i + j] = alphabet[i / (l/26) - 1];
                     }
                     else
                     {  
-                        itemStr[i] = alphabet[i / (l/26)];
+                        itemStr[i + j] = alphabet[i / (l/26)];
                     }
                     itemDouble[i+ j]  = i + 0.0;
                 }
